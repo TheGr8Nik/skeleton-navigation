@@ -8,5 +8,27 @@ export class App {
     ]);
 
     this.router = router;
+    window.router = router;
+
+    /**
+     * If we return it works
+     * /
+    return;
+    
+    /**
+     * If we return a promise and resolve it without delay it works
+     * /
+    return new Promise( function (resolve, reject) {
+      resolve();
+    });
+
+    /**
+     * If we return a promise and resolve it with a delay it DOES NOT work
+     */
+    return new Promise( function (resolve, reject) {
+      setTimeout( () => {
+        resolve();
+      }, 1000 );
+    });
   }
 }
